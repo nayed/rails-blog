@@ -4,5 +4,5 @@ Rails.application.routes.draw do
 
   get '/hi(/:name)', to: 'pages#hi', as: 'hi'
 
-  resources :posts, only: [:index]
+  resources :posts
 end
