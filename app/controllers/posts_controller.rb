@@ -13,7 +13,7 @@ class PostsController < ApplicationController
 
   def update
     @post.update(post_params)
-    redirect_to @post
+    redirect_to @post, success: "Yes!"
   end
 
   def new
@@ -22,12 +22,12 @@ class PostsController < ApplicationController
 
   def create
     post = Post.create(post_params)
-    redirect_to post
+    redirect_to post, success: "Article created!"
   end
 
   def destroy
     @post.destroy
-    redirect_to posts_path
+    redirect_to posts_path, success: "Awn, article destroyed"
   end
 
   private
