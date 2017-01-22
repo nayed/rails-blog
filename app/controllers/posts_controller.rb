@@ -20,8 +20,11 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post.update(post_params)
-    redirect_to @post, success: "Yes!"
+    if @post.update(post_params)
+      redirect_to @post, success: "Article updated!"
+    else
+      render 'edit'
+    end
   end
 
   def new
@@ -29,8 +32,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.create(post_params)
-    redirect_to post, success: "Article created!"
+    @post = Post.new(post_params)
+    if @post.valid?
+      @post.save
+      redirect_to @post, success: "Article created!"
+    else
+      render 'new'
+    end
   end
 
   def destroy
