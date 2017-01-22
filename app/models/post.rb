@@ -3,6 +3,8 @@ class Post < ApplicationRecord
                     length: { minimum: 3 }
   validates :content, presence: true
 
+  include Sluggable
+
   def as_json(options = nil)
     super(only: [:id, :title, :created_at])
   end
